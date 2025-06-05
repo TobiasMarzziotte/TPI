@@ -6,6 +6,8 @@ using namespace std;
 int main()
 {
     int opc;
+    while(true){
+            system("cls");
 
     cout << "-------Menu principal-------" << endl;
     cout << endl;
@@ -15,29 +17,43 @@ int main()
     cout << "4) Cargar lote de ventas" << endl;
     cout << "5) Mostrar reportes" << endl;
     cout << "0) Salir del Programa" << endl;
+    cout << endl;
+    cout << "Opcion: ";
+    cin >> opc;
 
     switch (opc){
     case 1:
-    break;
+    system("cls");
+    system("pause");
+        break;
     case 2:
+        system("cls");
+        system("pause");
         break;
     case 3:
+        system("cls");
+        system("pause");
         break;
     case 4:
+        system("cls");
+        system("pause");
         break;
     case 5:
+        system("cls");
+        system("pause");
         break;
     case 0:
+        system ("cls");
+        cout << "FIN DEL PROGRAMA, PRESIONE CUALQUIER TECLA PARA TERMINAR";
         return 0;
         break;
     default:
-        cout << "Opcion incorrecta" << endl;
-
-
-        probando edicion 1234
-
-ijojoijoij
+        system("cls");
+        cout<< "Opcion invalida" << endl;
+        cout << endl;
+        system("pause");
     }
+                }
 
 
 
