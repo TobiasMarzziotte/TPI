@@ -3,11 +3,30 @@ using namespace std;
 
 #include "funciones.h"
 
+// DECLARACION DE STRUCT
+
+    struct marca{
+    int codigoMarca;
+    string nombreMarca;
+    };
+
 int main()
 {
+// DECLARACION DE VARIABLES
+
     int opc;
+
+
+// DECLARACION DE VECTORES
+
+    marca marcas[10];
+
+
+    // MENU
+
     while(true){
-            system("cls");
+
+    system("cls");
 
     cout << "-------Menu principal-------" << endl;
     cout << endl;
@@ -19,34 +38,60 @@ int main()
     cout << "0) Salir del Programa" << endl;
     cout << endl;
     cout << "Opcion: ";
+
     cin >> opc;
 
     switch (opc){
     case 1:
+
     system("cls");
+
+    for(int x = 0; x < 10; x++)
+        {
+    cout << "CODIGO DE MARCA: " << endl;
+    cin >> marcas[x].codigoMarca;
+    if (marcas[x].codigoMarca >= 1 && marcas[x].codigoMarca <= 10) {
+        marcas[x].codigoMarca = marcas[x].codigoMarca;
+    } else {
+    cout << "CODIGO INVALIDO, SE TERMINA EL PROGRAMA";
+
+    return 0;
+    }
+    cout << "NOMBRE DE MARCA: " << endl;
+    cin >> marcas[x].nombreMarca;
+    system("cls");
+    }
+
     system("pause");
-        break;
+
+    break;
+
     case 2:
         system("cls");
         system("pause");
         break;
+
     case 3:
         system("cls");
         system("pause");
         break;
+
     case 4:
         system("cls");
         system("pause");
         break;
+
     case 5:
         system("cls");
         system("pause");
         break;
+
     case 0:
         system ("cls");
         cout << "FIN DEL PROGRAMA, PRESIONE CUALQUIER TECLA PARA TERMINAR";
         return 0;
         break;
+
     default:
         system("cls");
         cout<< "Opcion invalida" << endl;
