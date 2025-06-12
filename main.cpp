@@ -1,30 +1,22 @@
 #include <iostream>
+
 using namespace std;
 
-#include "funciones.h"
-
-// DECLARACION DE STRUCT
-
-    struct marca{
-    int codigoMarca;
-    string nombreMarca;
-    };
+struct Producto{
+    int codProducto;
+    string nombreProducto;
+    float precioVenta;
+    float precioCompra;
+    int stockDisponible;
+    int codMarca;
+};
 
 int main()
 {
-// DECLARACION DE VARIABLES
-
     int opc;
+    Producto productos[20];
 
-
-// DECLARACION DE VECTORES
-
-    marca marcas[10];
-
-
-    // MENU
-
-    while(true){
+ while(true){
 
     system("cls");
 
@@ -38,36 +30,44 @@ int main()
     cout << "0) Salir del Programa" << endl;
     cout << endl;
     cout << "Opcion: ";
-
     cin >> opc;
+
+    system("cls");
 
     switch (opc){
     case 1:
-
-    system("cls");
-
-    for(int x = 0; x < 10; x++)
-        {
-    cout << "CODIGO DE MARCA: " << endl;
-    cin >> marcas[x].codigoMarca;
-    if (marcas[x].codigoMarca >= 1 && marcas[x].codigoMarca <= 10) {
-        marcas[x].codigoMarca = marcas[x].codigoMarca;
-    } else {
-    cout << "CODIGO INVALIDO, SE TERMINA EL PROGRAMA";
-
-    return 0;
-    }
-    cout << "NOMBRE DE MARCA: " << endl;
-    cin >> marcas[x].nombreMarca;
-    system("cls");
-    }
-
-    system("pause");
-
-    break;
+        system("cls");
+        system("pause");
+        break;
 
     case 2:
         system("cls");
+
+        cout << "Ingrese el listado de 20 productos: ";
+        cout << "" << endl;
+
+        for (int i=0; i<20; i++){
+
+            cout << "Ingrese el codigo del producto: ";
+            cin >> productos[i].codProducto;
+
+            cout << "Ingrese el nombre del producto: ";
+            cin >> productos[i].nombreProducto);
+
+            cout << "Ingrese el precio de venta del producto: ";
+            cin >> productos[i].precioVenta;
+
+            cout << "Ingrese el precio de compra del producto: ";
+            cin >> productos[i].precioCompra;
+
+            cout << "Ingrese la cantidad de stock disponible del producto: ";
+            cin >> productos[i].stockDisponible;
+
+            cout << "Ingrese el codigo de marca del producto: ";
+            cin >> productos[i].codMarca;
+
+            cout << "----------------------------------------------";
+        }
         system("pause");
         break;
 
@@ -98,9 +98,9 @@ int main()
         cout << endl;
         system("pause");
     }
-                }
 
 
+ }
 
     return 0;
 }
