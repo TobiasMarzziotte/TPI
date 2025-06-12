@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -51,8 +52,9 @@ int main()
             cout << "Ingrese el codigo del producto: ";
             cin >> productos[i].codProducto;
 
+            cin.ignore();
             cout << "Ingrese el nombre del producto: ";
-            cin >> productos[i].nombreProducto);
+            getline(cin, productos[i].nombreProducto);
 
             cout << "Ingrese el precio de venta del producto: ";
             cin >> productos[i].precioVenta;
@@ -66,7 +68,7 @@ int main()
             cout << "Ingrese el codigo de marca del producto: ";
             cin >> productos[i].codMarca;
 
-            cout << "----------------------------------------------";
+            cout << "----------------------------------------------" << endl;
         }
         system("pause");
         break;
