@@ -1,8 +1,7 @@
 #include <iostream>
-using namespace std;
-
+#include "funciones.cpp"
 #include "funciones.h"
-
+using namespace std;
 // DECLARACION DE STRUCT
 
     struct marca{
@@ -20,7 +19,7 @@ int main()
 // DECLARACION DE VECTORES
 
     marca marcas[10];
-
+    FormaPago formasPago[5];
 
     // MENU
 
@@ -73,6 +72,7 @@ int main()
 
     case 3:
         system("cls");
+        CargarFormasPago(formasPago);
         system("pause");
         break;
 
