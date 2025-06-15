@@ -6,5 +6,13 @@
 
  void pedirNumeros();
 
+struct FormaPago {
+    string codigo;  // EF, MP, TR, TC, CT
+    string nombre;
+    int porcentaje;
+};
+
+void CargarFormasPago(FormaPago formasPago[]);
+
 
 #endif // FUNCIONES_H_INCLUDED
