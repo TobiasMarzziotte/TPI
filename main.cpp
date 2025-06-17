@@ -1,5 +1,4 @@
 #include <iostream>
-#include "funciones.cpp"
 #include "funciones.h"
 using namespace std;
 // DECLARACION DE STRUCT
