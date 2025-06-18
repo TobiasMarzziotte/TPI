@@ -1,15 +1,53 @@
 #include <iostream>
 #include <cctype>
+#include <string>
 #include "funciones.h"
-using namespace std;
 
-//funcion para convertir a mayusculas
+// DEFINICION DE FUNCIONES
+
+
+
+void cargarMarcas(marca marcas[], int cantidad) {
+
+    for (int x = 0; x < cantidad; x++) {
+        while (true) {
+            cout << "CODIGO DE MARCA (1 a 10): ";
+            cin >> marcas[x].codigoMarca;
+            system("cls");
+
+
+            if (marcas[x].codigoMarca < 1 || marcas[x].codigoMarca > 10) {
+                cout << "CODIGO INVALIDO, vuelva a empezar" << endl;
+                system("pause");
+                system("cls");
+
+                continue;
+            }
+
+            cout << "NOMBRE DE LA MARCA: " << endl;
+            cin.ignore();
+            getline(cin, marcas[x].nombreMarca);
+            system("cls");
+
+
+            if (marcas[x].nombreMarca.empty()) {
+                cout << "El nombre no puede estar vacio. Vuelva a empezar." << endl;
+                continue;
+            }
+
+            break;
+        }
+
+    }
+    cout << "Marcas cargadas con exito" << endl;
+}
+
 void mayusculas(string &str) {
     for (int i = 0; str[i] != '\0'; i++) {
         str[i] = toupper(str[i]);
     }
 }
-// función para cargar el tercer lote 
+
 void CargarFormasPago(FormaPago formasPago[]) {
     cout << "---- CARGA DE FORMAS DE PAGO ----" << endl;
 
@@ -19,12 +57,12 @@ void CargarFormasPago(FormaPago formasPago[]) {
         bool datosValidos = false;
         while (!datosValidos) {
             // Ingreso del código de la forma de pago
-            cout << "Ingrese codigo (EF,MP,TR,TC,CT): ";
+            cout << "Ingrese codigo (EF,MP,TR,TC,CT): " << endl;
             string codigoActual;
             cin >> codigoActual;
 
             // Convertir a mayúsculas
-            Mayusculas(codigoActual);
+            mayusculas(codigoActual);
 
             // Validar si el codigo es valido
             if (!(codigoActual == "EF" || codigoActual == "MP" || codigoActual == "TR" || codigoActual == "TC" || codigoActual == "CT")) {
@@ -64,18 +102,37 @@ void CargarFormasPago(FormaPago formasPago[]) {
 
             datosValidos = true;
             cout << "Forma de pago cargada correctamente" << endl;
+
         }
+
     }
     cout << endl << "Carga de formas de pago completada" << endl;
+
 }
 
+void cargarVentas(venta ventas){
+    while(ventas.numeroCompra != 0){
+    cout << "Ingrese numero de compra: " << endl;
+    cin >> ventas.numeroCompra;
 
+    cout << "Ingrese codigo de producto: " << endl;
+    cin >> ventas.codigoProducto;
 
+    cout << "Ingrese forma de pago (EF,MP,TR,TC,CT): " << endl;
+    cin >> ventas.formaPago;
 
-int suma(int n1, int n2)
-{
- int r = n1 + n2;
- return r;
+    cout << "Ingrese cantidad vendida: " << endl;
+    cin >> ventas.cantidadVendida;
+
+    cout << "Ingrese codigo de cliente (1 a 50): " << endl;
+    cin >> ventas.codigoCliente;
+
+    cout << "Ingrese dia de la venta (1 a 30): " << endl;
+    cin >> ventas.diaVenta;
+    cout << endl;
+    cout << "----------------------------------------" << endl;
+    cout << endl;
+    }
 }
 
 
