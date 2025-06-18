@@ -1,31 +1,25 @@
 #include <iostream>
+#include <string>
 #include "funciones.h"
-using namespace std;
-// DECLARACION DE STRUCT
 
-    struct marca{
-    int codigoMarca;
-    string nombreMarca;
-    };
+using namespace std;
 
 int main()
 {
 // DECLARACION DE VARIABLES
 
     int opc;
-
+    venta ventas;
 
 // DECLARACION DE VECTORES
 
     marca marcas[10];
     FormaPago formasPago[5];
+    
+
 
     // MENU
-
     while(true){
-
-    system("cls");
-
     cout << "-------Menu principal-------" << endl;
     cout << endl;
     cout << "1) Cargar lote de marcas" << endl;
@@ -40,27 +34,16 @@ int main()
     cin >> opc;
 
     switch (opc){
+
     case 1:
 
     system("cls");
 
-    for(int x = 0; x < 10; x++)
-        {
-    cout << "CODIGO DE MARCA: " << endl;
-    cin >> marcas[x].codigoMarca;
-    if (marcas[x].codigoMarca >= 1 && marcas[x].codigoMarca <= 10) {
-        marcas[x].codigoMarca = marcas[x].codigoMarca;
-    } else {
-    cout << "CODIGO INVALIDO, SE TERMINA EL PROGRAMA";
-
-    return 0;
-    }
-    cout << "NOMBRE DE MARCA: " << endl;
-    cin >> marcas[x].nombreMarca;
-    system("cls");
-    }
+    cargarMarcas(marcas, 10);
 
     system("pause");
+    system("cls");
+
 
     break;
 
@@ -71,18 +54,28 @@ int main()
 
     case 3:
         system("cls");
+
         CargarFormasPago(formasPago);
+
         system("pause");
+        system("cls");
         break;
 
     case 4:
         system("cls");
+
+        cargarVentas(ventas);
+
         system("pause");
+        system("cls");
+
         break;
 
     case 5:
         system("cls");
+     
         system("pause");
+        system("cls");
         break;
 
     case 0:
@@ -96,10 +89,9 @@ int main()
         cout<< "Opcion invalida" << endl;
         cout << endl;
         system("pause");
+        system ("cls");
     }
-                }
-
-
+}
 
     return 0;
 }
