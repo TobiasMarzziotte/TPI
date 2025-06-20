@@ -1,39 +1,22 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
+//INCLUIMOS LAS FUNCIONES QUE CONSTRUIMOS
 
-struct Producto{
-    int codProducto;
-    string nombreProducto;
-    float precioVenta;
-    float precioCompra;
-    int stockDisponible;
-    int codMarca;
-};
+#include "FUNCION_MENU.h"
+#include "FUNCION_CARGA_PRODUCTOS.h"
+
+using namespace std;
 
 int main()
 {
-    int opc;
-    Producto productos[20];
+    int opc; //VARIABLE QUE ALMACENARA LO QUE DEVUELVE LA FUNCION DEL MENU PRINCIPAL
+    Producto productos[20]; //DECLARAMOS EL VECTOR QUE VAMOS A UTILIZAR PARA LOS PRODUCTOS
+    bool iniciarMenu = false; //INICIAMOS UN BOOL PARA QUE EL WHILE SIGA REPITIENDO MIENTRAS SIGA EN FALSE
 
- while(true){
-
-    system("cls");
-
-    cout << "-------Menu principal-------" << endl;
-    cout << endl;
-    cout << "1) Cargar lote de marcas" << endl;
-    cout << "2) Cargar lote de productos" << endl;
-    cout << "3) Cargar lote de formas de pago" << endl;
-    cout << "4) Cargar lote de ventas" << endl;
-    cout << "5) Mostrar reportes" << endl;
-    cout << "0) Salir del Programa" << endl;
-    cout << endl;
-    cout << "Opcion: ";
-    cin >> opc;
-
-    system("cls");
+ while(iniciarMenu == false){
+    opc = menuPrincipal(); //RECIBIMOS POR REFERENCIA LA FUNCION DEL MENU Y LA ALMACENAMOS EN LA VARIABLE opc
+                           //SE INICIA EL MENU
 
     switch (opc){
     case 1:
@@ -47,30 +30,15 @@ int main()
         cout << "Ingrese el listado de 20 productos: ";
         cout << "" << endl;
 
-        for (int i=0; i<20; i++){
+        if (cargaProductos(productos)){
 
-            cout << "Ingrese el codigo del producto: ";
-            cin >> productos[i].codProducto;
-
-            cin.ignore();
-            cout << "Ingrese el nombre del producto: ";
-            getline(cin, productos[i].nombreProducto);
-
-            cout << "Ingrese el precio de venta del producto: ";
-            cin >> productos[i].precioVenta;
-
-            cout << "Ingrese el precio de compra del producto: ";
-            cin >> productos[i].precioCompra;
-
-            cout << "Ingrese la cantidad de stock disponible del producto: ";
-            cin >> productos[i].stockDisponible;
-
-            cout << "Ingrese el codigo de marca del producto: ";
-            cin >> productos[i].codMarca;
-
-            cout << "----------------------------------------------" << endl;
+            cout << "Se cargaron los 20 productos de manera correcta." << endl;
+        } else{
+            cout << "La carga tuvo un error. Inicie nuevamente." << endl;
         }
+
         system("pause");
+        system("cls");
         break;
 
     case 3:
@@ -100,7 +68,6 @@ int main()
         cout << endl;
         system("pause");
     }
-
 
  }
 
