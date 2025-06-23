@@ -1,0 +1,230 @@
+---CARGA MARCAS---
+
+1
+Mapple
+2
+Panaphonics
+3
+Shang Tsung
+4
+Sorny
+5
+Xiaopics
+6
+Asos
+7
+Lowgitex
+8
+RedLadron
+9
+Lentovo
+10
+HacheP
+
+
+
+---CARGA PRODUCTO---
+
+565
+Notebook Mapple
+21707
+12099
+29
+1
+546
+Notebook Shang Tsung
+23713
+14047
+18
+3
+768
+Notebook Sorny
+28739
+14158
+18
+4
+588
+Notebook Asos
+29369
+10907
+24
+6
+443
+Notebook Lentovo
+26844
+11469
+16
+9
+644
+Auriculares RedLadron
+26843
+14931
+18
+8
+991
+Impresora HacheP
+22758
+14779
+27
+10
+683
+Mouse Lowgitex
+20118
+12551
+10
+7
+192
+Teclado RedLadron
+26483
+10192
+25
+8
+959
+Monitor Xiaopics
+22786
+11173
+15
+5
+440
+Tablet Xiaopics
+25550
+12910
+25
+5
+582
+Monitor Shang Tsung
+24595
+10616
+20
+3
+271
+Tablet Sorny
+27064
+12801
+30
+4
+362
+Monitor Panaphonics
+25674
+12957
+21
+2
+857
+Mouse RedLadron
+23197
+10928
+12
+8
+236
+Tablet Mapple
+25037
+14756
+13
+1
+467
+Impresora Asos
+27318
+10791
+10
+6
+552
+Gabinete Lowgitex
+20065
+14105
+14
+7
+791
+Notebook HacheP
+24901
+11819
+20
+10
+192
+Monitor Lentovo
+25242
+13362
+12
+9
+
+---CARGA METODOS DE PAGO---
+
+
+EF
+Efectivo
+90
+MP
+Mercado Pago
+110
+TR
+Transferencia
+90
+TC
+Tarjeta de Crédito
+115
+CT
+Criptomoneda
+105
+
+
+---CARGA VENTAS---
+
+1
+565
+EF
+4
+11
+19
+2
+546
+MP
+4
+7
+4
+3
+768
+TR
+3
+37
+8
+4
+588
+TC
+10
+11
+17
+5
+443
+CT
+4
+50
+14
+6
+644
+EF
+3
+10
+9
+7
+991
+MP
+5
+15
+7
+8
+683
+TR
+8
+45
+4
+9
+192
+TC
+5
+49
+17
+10
+959
+CT
+7
+8
+21
