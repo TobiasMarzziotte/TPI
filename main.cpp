@@ -1,30 +1,37 @@
 #include <iostream>
-#include "Funciones.h"
-
+#include <string>
 using namespace std;
 
-int main()
-{
-// DECLARACION DE VARIABLES
+#include "Funciones.h"
+
+
+int main() {
+
+    // DECLARACION DE VARIABLES
 
     int opc;
     int opcReporte;
-
     int totalVentas = 0;
-
     venta ventas;
 
-// DECLARACION DE VECTORES
+    // DECLARACION DE VECTORES STRUCT
 
     marca marcas[10];
-    Producto productos[20]; //DECLARAMOS EL VECTOR QUE VAMOS A UTILIZAR PARA LOS PRODUCTOS
     FormaPago formasPago[5];
-    int contadorVentasPorForma[5]={0};
+    Producto productos[20];
+    VentaMarcaForma acumulador[100];
+
+    // DECLARACION DE VECTORES
+
+    int contadorVentasPorForma[5] = {0};
+    int cantidadAcumulada = 0;
+    int ventasPorProducto[20] = {0};
+    float recaudadoPorProducto[20] = {0};
+
 
     // MENU
 
     bool iniciarMenu = false; //INICIAMOS UN BOOL PARA QUE EL WHILE SIGA REPITIENDO MIENTRAS SIGA EN FALSE
-
 
     while(iniciarMenu == false){
     opc = menuPrincipal(); //RECIBIMOS POR REFERENCIA LA FUNCION DEL MENU Y LA ALMACENAMOS EN LA VARIABLE opc
@@ -37,6 +44,8 @@ int main()
     cargarMarcas(marcas, 10);
 
     system("pause");
+    system("cls");
+
     break;
 
     case 2:
@@ -53,28 +62,35 @@ int main()
                 cout << "La carga tuvo un error. Inicie nuevamente." << endl;
             }
         system("pause");
+        system("cls");
         break;
 
     case 3:
         system("cls");
         CargarFormasPago(formasPago);
         system("pause");
+        system("cls");
         break;
 
     case 4:
         system("cls");
-        cargarVentas(contadorVentasPorForma, totalVentas, formasPago);
-        system("pause");
+        cargarVentas(contadorVentasPorForma, totalVentas, formasPago, acumulador,cantidadAcumulada, productos ,ventasPorProducto, recaudadoPorProducto);
+        system("pause");  // cargarVentas(contadorVentasPorForma, totalVentas, formasPago, productos, ventasPorProducto);
+        system("cls");
+
+
         break;
 
     case 5:
                 system("cls");
+                do {
                 opcReporte = menuReportes();
+
 
                 switch (opcReporte) {
                 case 1:
                     system("cls");
-
+                    reportePunto1(productos, ventasPorProducto, recaudadoPorProducto, totalVentas);
                     system("pause");
                     break;
 
@@ -86,12 +102,14 @@ int main()
 
                 case 3:
                     system("cls");
-
+                    reportePunto3(acumulador,cantidadAcumulada,formasPago,marcas);
                     system("pause");
                     break;
 
                 case 4:
                     system("cls");
+
+                    reporteSinVentas(productos, ventasPorProducto);
 
                     system("pause");
                     break;
@@ -115,6 +133,8 @@ int main()
                     system("pause");
                     break;
                 }
+                } while (opcReporte != 0);
+                break;
 
     case 0:
         system ("cls");
@@ -129,8 +149,6 @@ int main()
         system("pause");
     }
                 }
-
-
 
 
     return 0;
