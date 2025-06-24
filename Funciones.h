@@ -1,15 +1,24 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
+#include <string>
+
 using namespace std;
 
-//struct para lote 1
+
+
+// DECLARACION DE STRUCT
+
 struct marca{
     int codigoMarca;
     string nombreMarca;
-    };
+};
 
+struct FormaPago {
+    string codigo;  // EF, MP, TR, TC, CT
+    string nombre;
+    int porcentaje;
+};
 
-//Struct del lote 2
 struct Producto{
     int codProducto;
     string nombreProducto;
@@ -19,15 +28,6 @@ struct Producto{
     int codMarca;
 };
 
-//struct para el lote 3
-struct FormaPago {
-    string codigo;  // EF, MP, TR, TC, CT
-    string nombre;
-    int porcentaje;
-};
-
-
-//struct para lote 4
 struct venta{
     int numeroCompra;
     int codigoProducto;
@@ -35,23 +35,38 @@ struct venta{
     int cantidadVendida;
     int codigoCliente;
     int diaVenta;
-
 };
 
-void cargarMarcas(marca marcas[], int cantidad);
+struct VentaMarcaForma {
+    int codigoMarca;
+    string codigoFormaPago;
+    int cantidadVendida;
+};
 
-void CargarFormasPago(FormaPago formasPago[]);
+// DECLARACION DE FUNCIONES
+void reportePunto1(Producto productos[], int ventasPorProducto[], float recaudacionPorProducto[], int totalVentas);
+
+void reportePunto2(int contadorVentasPorForma[], int totalVentas, FormaPago formasPago[]);
+
+void reportePunto3(VentaMarcaForma acumulador[], int cantidadAcumulada, FormaPago formasPago[], marca marcas[]);
+
+int menuPrincipal();
+
+int menuReportes(); //declaraciÃ³n para el menÃº de reportes
 
 void mayusculas(string &str);
 
-void cargarVentas(int contadorVentasPorForma[], int& totalVentas, FormaPago formasPago[]);
+void CargarFormasPago(FormaPago formasPago[]);
 
-bool cargaProductos(Producto productos[]);
+void cargarMarcas(marca marcas[], int cantidad);
 
-int menuPrincipal(); //DECLARACION DE FUNCION PARA LLAMAR AL MENU PRINCIPAL
+void cargarVentas(int contadorVentasPorForma[], int& totalVentas, FormaPago formasPago[], VentaMarcaForma acumulador[], int &cantAcumuladas, Producto productos[], int ventasPorProducto[], float recaudadoPorProducto[]);
 
-int menuReportes(); //declaración para el menú de reportes
+bool cargaProductos(Producto productos[]); //contadorVentasPorForma, totalVentas, formasPago, acumulador,cantidadAcumulada, productos ,ventasPorProducto
 
-void reportePunto2(int contadorVentasPorForma[], int totalVentas, FormaPago formasPago[]);
+void reporteSinVentas(Producto productos[], int ventasPorProducto[]);
+
+
+
 
 #endif // FUNCIONES_H_INCLUDED
