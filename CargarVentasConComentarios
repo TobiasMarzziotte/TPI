@@ -1,0 +1,87 @@
+void cargarVentas(int contadorVentasPorForma[], int& totalVentas, FormaPago formasPago[], VentaMarcaForma acumulador[], int &cantAcumuladas, Producto productos[], int ventasPorProducto[], float recaudadoPorProducto[], int comprasPorCliente[]) {
+
+    venta ventas;
+    totalVentas = 0;
+    cantAcumuladas = 0;
+
+    cout << "Ingrese numero de compra (0 para finalizar): ";
+    cin >> ventas.numeroCompra;
+
+    while (ventas.numeroCompra != 0) {
+        cout << "Ingrese codigo de producto: ";
+        cin >> ventas.codigoProducto;
+
+        cout << "Ingrese forma de pago (EF,MP,TR,TC,CT): ";
+        cin >> ventas.formaPago;
+        mayusculas(ventas.formaPago);
+
+        cout << "Ingrese cantidad vendida: ";
+        cin >> ventas.cantidadVendida;
+
+        cout << "Ingrese codigo de cliente (1 a 50): ";
+        cin >> ventas.codigoCliente;
+
+        cout << "Ingrese dia de la venta (1 a 30): ";
+        cin >> ventas.diaVenta;
+        
+        
+        // ACUMULAR VENTAS Y RECAUDACION POR PRODUCTO
+        
+        for (int i = 0; i < 20; i++) {
+            if (productos[i].codProducto == ventas.codigoProducto){
+            ventasPorProducto[i] += ventas.cantidadVendida;
+            recaudadoPorProducto[i] += ventas.cantidadVendida * productos[i].precioVenta;
+            break;
+            }
+        }
+
+        // Actualizar contador de forma de pago (para punto 2)
+        
+        for (int i = 0; i < 5; i++) {
+            if (formasPago[i].codigo == ventas.formaPago) {
+                contadorVentasPorForma[i]++;
+            }
+        }
+
+        // Buscar la marca del producto (PUNTO 3)
+        int codMarca = -1; 
+        for (int i = 0; i < 20; i++) {
+            if (productos[i].codProducto == ventas.codigoProducto) {
+                codMarca = productos[i].codMarca;
+            }
+        }
+
+       // Acumular ventas por marca y forma de pago (PUNTO 3)
+        if (codMarca != -1) {
+            bool encontrada = false; // BOOL para saber si ya existe una combinacion de esa marca y esa forma de pago en el acumulador.
+            for (int i = 0; i < cantAcumuladas; i++) {
+                if (acumulador[i].codigoMarca == codMarca && acumulador[i].codigoFormaPago == ventas.formaPago) {
+                    acumulador[i].cantidadVendida += ventas.cantidadVendida;
+                    encontrada = true;
+                }
+            }
+            if (!encontrada) { //Si no encontramos ninguna coincidencia de marca + forma de pago, creamos un nuevo registro en el acumulador
+                acumulador[cantAcumuladas].codigoMarca = codMarca;
+                acumulador[cantAcumuladas].codigoFormaPago = ventas.formaPago;
+                acumulador[cantAcumuladas].cantidadVendida = ventas.cantidadVendida;
+                cantAcumuladas++;
+            }
+
+
+            // buscar ventar por cliente para (para punto 5)
+            if (ventas.codigoCliente >= 1 && ventas.codigoCliente <= 50){
+                comprasPorCliente[ventas.codigoCliente]++;
+            }
+
+        }
+        // ANTES DE CARGAR LA PROXIMA VENTA, SE ACUMULA LA VENTA ACTUAL EN totalVentas
+        totalVentas++;
+
+        cout << "----------------------------------------" << endl;
+        cout << "Ingrese numero de compra (0 para finalizar): ";
+        cin >> ventas.numeroCompra;
+    }
+}
+
+    return 0;
+}
