@@ -1,0 +1,56 @@
+// Paso 1: Arreglos auxiliares en main.cpp En el bloque principal, declarás estos arreglos para acumular la info de ventas por producto:
+
+float recaudadoPorProducto[20] = {0};
+int cantidadVendidaPorProducto[20] = {0};
+
+//  Paso 2: Dentro de tu función cargarVentas(...)
+
+// Buscar el producto
+    for (int i = 0; i < 20; i++) {
+        if (productos[i].codProducto == venta.codigoProducto) {
+            cantidadVendidaPorProducto[i] += venta.cantidadVendida;
+            recaudadoPorProducto[i] += venta.cantidadVendida * productos[i].precioUnitario;
+            break;
+        }
+    }
+
+   // Paso 3: Función reportePunto1 (ordenada por cantidad vendida)
+
+
+void reportePunto1(Producto productos[], int vendidos[], float recaudado[]) {
+    // Burbujeo
+    for (int i = 0; i < 19; i++) {
+        for (int j = 0; j < 19 - i; j++) {
+            if (vendidos[j] < vendidos[j + 1]) {
+                // Intercambiar vendidos
+                int auxV = vendidos[j];
+                vendidos[j] = vendidos[j + 1];
+                vendidos[j + 1] = auxV;
+
+                // Intercambiar recaudado
+                float auxR = recaudado[j];
+                recaudado[j] = recaudado[j + 1];
+                recaudado[j + 1] = auxR;
+
+                // Intercambiar producto
+                Producto auxP = productos[j];
+                productos[j] = productos[j + 1];
+                productos[j + 1] = auxP;
+            }
+        }
+    }
+
+    // Mostrar
+
+    cout << "RECAUDACION POR PRODUCTO (ORDENADO POR CANTIDAD VENDIDA)" << endl;
+    cout << "--------------------------------------------------------" << endl;
+
+    for (int i = 0; i < 20; i++) {
+        cout << "Codigo: " << productos[i].codProducto
+             << " | Nombre: " << productos[i].nombre
+             << " | Vendido: " << vendidos[i]
+             << " | Recaudado: $" << recaudado[i]
+             << " | Stock remanente: " << (productos[i].stock - vendidos[i])
+             << endl;
+    }
+}
