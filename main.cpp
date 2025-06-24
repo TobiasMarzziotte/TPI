@@ -1,89 +1,140 @@
 #include <iostream>
-#include "funciones.h"
+#include <string>
 using namespace std;
-// DECLARACION DE STRUCT
 
-    struct marca{
-    int codigoMarca;
-    string nombreMarca;
-    };
+#include "Funciones.h"
 
-int main()
-{
-// DECLARACION DE VARIABLES
+
+int main() {
+
+    // DECLARACION DE VARIABLES
 
     int opc;
+    int opcReporte;
+    int totalVentas = 0;
+    venta ventas;
 
-
-// DECLARACION DE VECTORES
+    // DECLARACION DE VECTORES STRUCT
 
     marca marcas[10];
     FormaPago formasPago[5];
+    Producto productos[20];
+    VentaMarcaForma acumulador[100];
+
+    // DECLARACION DE VECTORES
+
+    int contadorVentasPorForma[5] = {0};
+    int cantidadAcumulada = 0;
+    int ventasPorProducto[20] = {0};
+    float recaudadoPorProducto[20] = {0};
+    int comprasPorCliente[50] = {0};
 
     // MENU
 
-    while(true){
+    bool iniciarMenu = false; //INICIAMOS UN BOOL PARA QUE EL WHILE SIGA REPITIENDO MIENTRAS SIGA EN FALSE
 
-    system("cls");
-
-    cout << "-------Menu principal-------" << endl;
-    cout << endl;
-    cout << "1) Cargar lote de marcas" << endl;
-    cout << "2) Cargar lote de productos" << endl;
-    cout << "3) Cargar lote de formas de pago" << endl;
-    cout << "4) Cargar lote de ventas" << endl;
-    cout << "5) Mostrar reportes" << endl;
-    cout << "0) Salir del Programa" << endl;
-    cout << endl;
-    cout << "Opcion: ";
-
-    cin >> opc;
+    while(iniciarMenu == false){
+    opc = menuPrincipal(); //RECIBIMOS POR REFERENCIA LA FUNCION DEL MENU Y LA ALMACENAMOS EN LA VARIABLE opc
+                           //SE INICIA EL MENU
 
     switch (opc){
     case 1:
-
     system("cls");
 
-    for(int x = 0; x < 10; x++)
-        {
-    cout << "CODIGO DE MARCA: " << endl;
-    cin >> marcas[x].codigoMarca;
-    if (marcas[x].codigoMarca >= 1 && marcas[x].codigoMarca <= 10) {
-        marcas[x].codigoMarca = marcas[x].codigoMarca;
-    } else {
-    cout << "CODIGO INVALIDO, SE TERMINA EL PROGRAMA";
-
-    return 0;
-    }
-    cout << "NOMBRE DE MARCA: " << endl;
-    cin >> marcas[x].nombreMarca;
-    system("cls");
-    }
+    cargarMarcas(marcas, 10);
 
     system("pause");
+    system("cls");
 
     break;
 
     case 2:
         system("cls");
+        cout << "Ingrese el listado de 20 productos: ";
+        cout << endl;
+
+            if (cargaProductos(productos))
+            {
+                cout << "Se cargaron los 20 productos de manera correcta." << endl;
+            }
+            else
+            {
+                cout << "La carga tuvo un error. Inicie nuevamente." << endl;
+            }
         system("pause");
+        system("cls");
         break;
 
     case 3:
         system("cls");
         CargarFormasPago(formasPago);
         system("pause");
+        system("cls");
         break;
 
     case 4:
         system("cls");
-        system("pause");
+        cargarVentas(contadorVentasPorForma, totalVentas, formasPago, acumulador,cantidadAcumulada, productos ,ventasPorProducto, recaudadoPorProducto, comprasPorCliente);
+        system("pause");  // cargarVentas(contadorVentasPorForma, totalVentas, formasPago, productos, ventasPorProducto);
+        system("cls");
+
+
         break;
 
     case 5:
-        system("cls");
-        system("pause");
-        break;
+                system("cls");
+                do {
+                opcReporte = menuReportes();
+
+
+                switch (opcReporte) {
+                case 1:
+                    system("cls");
+                    reportePunto1(productos, ventasPorProducto, recaudadoPorProducto, totalVentas);
+                    system("pause");
+                    break;
+
+                case 2:
+                    system("cls");
+                    reportePunto2(contadorVentasPorForma, totalVentas, formasPago);
+                    system("pause");
+                    break;
+
+                case 3:
+                    system("cls");
+                    reportePunto3(acumulador,cantidadAcumulada,formasPago,marcas);
+                    system("pause");
+                    break;
+
+                case 4:
+                    system("cls");
+
+                    reporteSinVentas(productos, ventasPorProducto);
+
+                    system("pause");
+                    break;
+
+                case 5:
+                    system("cls");
+                    reportePunto5(comprasPorCliente);
+                    system("pause");
+                    break;
+
+                case 0:
+                    system("cls");
+                    continue;
+                    system("pause");
+                    break;
+
+                default:
+                    system("cls");
+                    cout<< "Opcion invalida" << endl;
+                    cout << endl;
+                    system("pause");
+                    break;
+                }
+                } while (opcReporte != 0);
+                break;
 
     case 0:
         system ("cls");
@@ -98,7 +149,6 @@ int main()
         system("pause");
     }
                 }
-
 
 
     return 0;
